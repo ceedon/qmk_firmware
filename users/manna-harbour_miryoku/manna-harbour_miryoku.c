@@ -6,6 +6,17 @@
 
 #include "manna-harbour_miryoku.h"
 
+// Tap Dance declarations
+enum {
+    TD_J_GAME,
+};
+
+// Tap Dance definitions
+qk_tap_dance_action_t tap_dance_actions[] = {
+    // Tap once for J, twice for GAME
+    [TD_J_GAME] = ACTION_TAP_DANCE_LAYER_TOGGLE(KC_J, GAME),
+};
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 #if defined MIRYOKU_LAYERS_FLIP
   [BASE] = LAYOUT_miryoku(
@@ -30,10 +41,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     LT(BUTTON, KC_SLSH), ALGR_T(KC_Q),      KC_J,              KC_K,              KC_X,              KC_B,              KC_M,              KC_W,              ALGR_T(KC_V),      LT(BUTTON, KC_Z),
     U_NP,              U_NP,              LT(FUN, KC_DEL),   LT(NUM, KC_BSPC),  LT(SYM, KC_ENT),   LT(MOUSE, KC_TAB), LT(NAV, KC_SPC),   LT(MEDIA, KC_ESC), U_NP,              U_NP
   #elif defined MIRYOKU_ALPHAS_HALMAK
-    KC_W,              KC_L,              KC_R,              KC_B,              KC_Z,              KC_QUOT,           KC_Q,              KC_U,              KC_D,              KC_J,
+    KC_W,              KC_L,              KC_R,              KC_B,              KC_Z,              KC_QUOT,           KC_Q,              KC_U,              KC_D,              TD(TD_J_GAME),
     LGUI_T(KC_S),      LALT_T(KC_H),      LCTL_T(KC_N),      LSFT_T(KC_T),      KC_COMM,           KC_DOT,            LSFT_T(KC_A),      LCTL_T(KC_E),      LALT_T(KC_O),      LGUI_T(KC_I),
     LT(BUTTON, KC_F),  ALGR_T(KC_M),      KC_V,              KC_C,              KC_SLSH,           KC_G,              KC_P,              KC_X,              ALGR_T(KC_K),      LT(BUTTON, KC_Y),
-    U_NP,              U_NP,              LT(FUN, KC_DEL),   LT(NUM, KC_BSPC),  LT(SYM, KC_ENT),   LT(MOUSE, KC_TAB), LT(NAV, KC_SPC),   LT(MEDIA, KC_ESC), U_NP,              U_NP
+    U_NP,              U_NP,              LT(FUN, KC_ESC),   LT(NUM, KC_BSPC),  LT(SYM, KC_TAB),   LT(MOUSE, KC_ENT), LT(NAV, KC_SPC),   LT(MEDIA, KC_DEL), U_NP,              U_NP
   #elif defined MIRYOKU_ALPHAS_WORKMAN
     KC_Q,              KC_D,              KC_R,              KC_W,              KC_B,              KC_J,              KC_F,              KC_U,              KC_P,              KC_QUOT,
     LGUI_T(KC_A),      LALT_T(KC_S),      LCTL_T(KC_H),      LSFT_T(KC_T),      KC_G,              KC_Y,              LSFT_T(KC_N),      LCTL_T(KC_E),      LALT_T(KC_O),      LGUI_T(KC_I),
@@ -136,10 +147,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     LT(BUTTON, KC_SLSH), ALGR_T(KC_Q),      KC_J,              KC_K,              KC_X,              KC_B,              KC_M,              KC_W,              ALGR_T(KC_V),      LT(BUTTON, KC_Z),
     U_NP,              U_NP,              LT(MEDIA, KC_ESC), LT(NAV, KC_SPC),   LT(MOUSE, KC_TAB), LT(SYM, KC_ENT),   LT(NUM, KC_BSPC),  LT(FUN, KC_DEL),   U_NP,              U_NP
   #elif defined MIRYOKU_ALPHAS_HALMAK
-    KC_W,              KC_L,              KC_R,              KC_B,              KC_Z,              KC_QUOT,           KC_Q,              KC_U,              KC_D,              KC_J,
+    KC_W,              KC_L,              KC_R,              KC_B,              KC_Z,              KC_QUOT,           KC_Q,              KC_U,              KC_D,              TD(TD_J_GAME),
     LGUI_T(KC_S),      LALT_T(KC_H),      LCTL_T(KC_N),      LSFT_T(KC_T),      KC_COMM,           KC_DOT,            LSFT_T(KC_A),      LCTL_T(KC_E),      LALT_T(KC_O),      LGUI_T(KC_I),
     LT(BUTTON, KC_F),  ALGR_T(KC_M),      KC_V,              KC_C,              KC_SLSH,           KC_G,              KC_P,              KC_X,              ALGR_T(KC_K),      LT(BUTTON, KC_Y),
-    U_NP,              U_NP,              LT(MEDIA, KC_ESC), LT(NAV, KC_SPC),   LT(MOUSE, KC_TAB), LT(SYM, KC_ENT),   LT(NUM, KC_BSPC),  LT(FUN, KC_DEL),   U_NP,              U_NP
+    U_NP,              U_NP,              LT(MEDIA, KC_ESC), LT(NAV, KC_BSPC),  LT(MOUSE, KC_TAB), LT(SYM, KC_ENT),   LT(NUM, KC_SPC),   LT(FUN, KC_DEL), U_NP,              U_NP
   #elif defined MIRYOKU_ALPHAS_WORKMAN
     KC_Q,              KC_D,              KC_R,              KC_W,              KC_B,              KC_J,              KC_F,              KC_U,              KC_P,              KC_QUOT,
     LGUI_T(KC_A),      LALT_T(KC_S),      LCTL_T(KC_H),      LSFT_T(KC_T),      KC_G,              KC_Y,              LSFT_T(KC_N),      LCTL_T(KC_E),      LALT_T(KC_O),      LGUI_T(KC_I),
@@ -220,6 +231,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     U_NP,    U_NP,    KC_APP,  KC_SPC,  KC_TAB,  U_NA,    U_NA,    U_NA,    U_NP,    U_NP
   ),
 #endif
+  [GAME] = LAYOUT_miryoku(
+    KC_1 ,   KC_Q,  KC_W,   KC_E,   KC_R,  U_NA, U_NA, U_NA, U_NA, TG(GAME),
+    KC_LSFT, KC_A,  KC_S,   KC_D,   KC_F,  U_NA, U_NA, U_NA, U_NA, U_NA,
+    KC_P,    KC_Z,  KC_X,   KC_C,   KC_V,  KC_B, U_NA, U_NA, U_NA, KC_L,
+    U_NP,    U_NP,  KC_ESC, KC_SPC, KC_M,  U_NA, U_NA, U_NA, U_NP, U_NP
+  ),
   [BUTTON] = LAYOUT_miryoku(
     U_UND,   U_CUT,   U_CPY,   U_PST,   U_RDO,   U_RDO,   U_PST,   U_CPY,   U_CUT,   U_UND,
     KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, KC_TRNS, KC_TRNS, KC_LSFT, KC_LCTL, KC_LALT, KC_LGUI,
