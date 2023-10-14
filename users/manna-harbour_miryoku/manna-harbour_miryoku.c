@@ -232,8 +232,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 #endif
   [GAME] = LAYOUT_miryoku(
-    KC_1 ,   KC_Q,  KC_W,   KC_E,   KC_R,  U_NA, U_NA, U_NA, U_NA, TG(GAME),
-    KC_LSFT, KC_A,  KC_S,   KC_D,   KC_F,  U_NA, U_NA, U_NA, U_NA, U_NA,
+    KC_1 ,   KC_Q,  KC_W,   KC_E,   KC_R,  MAGIC_UNNO_GUI, KC_ESC, U_NA, U_NA, TG(GAME),
+    KC_LSFT, KC_A,  KC_S,   KC_D,   KC_F,  KC_LGUI, U_NA, U_NA, U_NA, U_NA,
     KC_P,    KC_Z,  KC_X,   KC_C,   KC_V,  KC_B, U_NA, U_NA, U_NA, KC_L,
     U_NP,    U_NP,  KC_ESC, KC_SPC, KC_M,  U_NA, U_NA, U_NA, U_NP, U_NP
   ),
